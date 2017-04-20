@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-karma-webpack/node_modules/karma-webpack/lib/mocha-env-loader.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-karma-webpack">npmtest-karma-webpack (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-karma-webpack/node_modules/karma-webpack/lib/mocha-env-loader.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">8.7% <small>(2 / 23)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">9.09% <small>(2 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-karma-webpack/node_modules/karma-webpack/lib/</a> &#187; mocha-env-loader.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+var _stringify = require('babel-runtime/core-js/json/stringify');
+&nbsp;
+<span class="cstat-no" title="statement not covered" >var _stringify2 = _interopRequireDefault(_stringify);</span>
+&nbsp;
+<span class="fstat-no" title="function not covered" >function _interopRequireDefault(obj) {</span> <span class="cstat-no" title="statement not covered" >return obj &amp;&amp; obj.__esModule ? obj : { default: obj }; </span>}
+&nbsp;
+//var path = require('path')
+<span class="cstat-no" title="statement not covered" >var SourceNode = require('source-map').SourceNode;</span>
+<span class="cstat-no" title="statement not covered" >var loaderUtils = require('loader-utils');</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >module.exports = <span class="fstat-no" title="function not covered" >function (content, map) {</span></span>
+<span class="cstat-no" title="statement not covered" >  this.cacheable();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var sourceNode;</span>
+<span class="cstat-no" title="statement not covered" >  var id = this.options.name;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (!id) {</span>
+<span class="cstat-no" title="statement not covered" >    this.callback(null, content, map);</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (map) {</span>
+<span class="cstat-no" title="statement not covered" >    sourceNode = SourceNode.fromSourceWithMap(content, map);</span>
+  } else {
+<span class="cstat-no" title="statement not covered" >    var fileName = loaderUtils.getRemainingRequest(this);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    sourceNode = new SourceNode(null, null, null);</span>
+<span class="cstat-no" title="statement not covered" >    content.split('\n').forEach(<span class="fstat-no" title="function not covered" >function (line, idx) {</span></span>
+<span class="cstat-no" title="statement not covered" >      sourceNode.add(new SourceNode(idx + 1, 0, fileName, line + '\n'));</span>
+    });
+<span class="cstat-no" title="statement not covered" >    sourceNode.setSourceContent(fileName, content);</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var concatSrc = new SourceNode();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  concatSrc.add(['describe(' + (0, _stringify2.default)(id) + ', function() {\n', sourceNode, '\n});']);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  var result = concatSrc.toStringWithSourceMap();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  this.callback(undefined, result.code, result.map.toString());</span>
+};
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1vY2hhLWVudi1sb2FkZXIuanMiXSwibmFtZXMiOlsiU291cmNlTm9kZSIsInJlcXVpcmUiLCJsb2FkZXJVdGlscyIsIm1vZHVsZSIsImV4cG9ydHMiLCJjb250ZW50IiwibWFwIiwiY2FjaGVhYmxlIiwic291cmNlTm9kZSIsImlkIiwib3B0aW9ucyIsIm5hbWUiLCJjYWxsYmFjayIsImZyb21Tb3VyY2VXaXRoTWFwIiwiZmlsZU5hbWUiLCJnZXRSZW1haW5pbmdSZXF1ZXN0Iiwic3BsaXQiLCJmb3JFYWNoIiwibGluZSIsImlkeCIsImFkZCIsInNldFNvdXJjZUNvbnRlbnQiLCJjb25jYXRTcmMiLCJyZXN1bHQiLCJ0b1N0cmluZ1dpdGhTb3VyY2VNYXAiLCJ1bmRlZmluZWQiLCJjb2RlIiwidG9TdHJpbmciXSwibWFwcGluZ3MiOiI7Ozs7Ozs7O0FBQUE7QUFDQSxJQUFJQSxhQUFhQyxRQUFRLFlBQVIsRUFBc0JELFVBQXZDO0FBQ0EsSUFBSUUsY0FBY0QsUUFBUSxjQUFSLENBQWxCOztBQUVBRSxPQUFPQyxPQUFQLEdBQWlCLFVBQVNDLE9BQVQsRUFBa0JDLEdBQWxCLEVBQXVCO0FBQ3RDLE9BQUtDLFNBQUw7O0FBRUEsTUFBSUMsVUFBSjtBQUNBLE1BQUlDLEtBQUssS0FBS0MsT0FBTCxDQUFhQyxJQUF0Qjs7QUFFQSxNQUFJLENBQUNGLEVBQUwsRUFBUztBQUNQLFNBQUtHLFFBQUwsQ0FBYyxJQUFkLEVBQW9CUCxPQUFwQixFQUE2QkMsR0FBN0I7QUFDRDs7QUFFRCxNQUFJQSxHQUFKLEVBQVM7QUFDUEUsaUJBQWFSLFdBQVdhLGlCQUFYLENBQTZCUixPQUE3QixFQUFzQ0MsR0FBdEMsQ0FBYjtBQUNELEdBRkQsTUFFTztBQUNMLFFBQUlRLFdBQVdaLFlBQVlhLG1CQUFaLENBQWdDLElBQWhDLENBQWY7O0FBRUFQLGlCQUFhLElBQUlSLFVBQUosQ0FBZSxJQUFmLEVBQXFCLElBQXJCLEVBQTJCLElBQTNCLENBQWI7QUFDQUssWUFBUVcsS0FBUixDQUFjLElBQWQsRUFBb0JDLE9BQXBCLENBQTRCLFVBQVNDLElBQVQsRUFBZUMsR0FBZixFQUFvQjtBQUM5Q1gsaUJBQVdZLEdBQVgsQ0FBZSxJQUFJcEIsVUFBSixDQUFlbUIsTUFBTSxDQUFyQixFQUF3QixDQUF4QixFQUEyQkwsUUFBM0IsRUFBcUNJLE9BQU8sSUFBNUMsQ0FBZjtBQUNELEtBRkQ7QUFHQVYsZUFBV2EsZ0JBQVgsQ0FBNEJQLFFBQTVCLEVBQXNDVCxPQUF0QztBQUNEOztBQUVELE1BQUlpQixZQUFZLElBQUl0QixVQUFKLEVBQWhCOztBQUVBc0IsWUFBVUYsR0FBVixDQUFjLENBQ1osY0FBYyx5QkFBZVgsRUFBZixDQUFkLEdBQW1DLGtCQUR2QixFQUMyQ0QsVUFEM0MsRUFDdUQsT0FEdkQsQ0FBZDs7QUFJQSxNQUFJZSxTQUFTRCxVQUFVRSxxQkFBVixFQUFiOztBQUVBLE9BQUtaLFFBQUwsQ0FBY2EsU0FBZCxFQUF5QkYsT0FBT0csSUFBaEMsRUFBc0NILE9BQU9qQixHQUFQLENBQVdxQixRQUFYLEVBQXRDO0FBQ0QsQ0EvQkQiLCJmaWxlIjoibW9jaGEtZW52LWxvYWRlci5qcyIsInNvdXJjZXNDb250ZW50IjpbIi8vdmFyIHBhdGggPSByZXF1aXJlKCdwYXRoJylcbnZhciBTb3VyY2VOb2RlID0gcmVxdWlyZSgnc291cmNlLW1hcCcpLlNvdXJjZU5vZGVcbnZhciBsb2FkZXJVdGlscyA9IHJlcXVpcmUoJ2xvYWRlci11dGlscycpXG5cbm1vZHVsZS5leHBvcnRzID0gZnVuY3Rpb24oY29udGVudCwgbWFwKSB7XG4gIHRoaXMuY2FjaGVhYmxlKClcblxuICB2YXIgc291cmNlTm9kZVxuICB2YXIgaWQgPSB0aGlzLm9wdGlvbnMubmFtZVxuXG4gIGlmICghaWQpIHtcbiAgICB0aGlzLmNhbGxiYWNrKG51bGwsIGNvbnRlbnQsIG1hcClcbiAgfVxuXG4gIGlmIChtYXApIHtcbiAgICBzb3VyY2VOb2RlID0gU291cmNlTm9kZS5mcm9tU291cmNlV2l0aE1hcChjb250ZW50LCBtYXApXG4gIH0gZWxzZSB7XG4gICAgdmFyIGZpbGVOYW1lID0gbG9hZGVyVXRpbHMuZ2V0UmVtYWluaW5nUmVxdWVzdCh0aGlzKVxuXG4gICAgc291cmNlTm9kZSA9IG5ldyBTb3VyY2VOb2RlKG51bGwsIG51bGwsIG51bGwpXG4gICAgY29udGVudC5zcGxpdCgnXFxuJykuZm9yRWFjaChmdW5jdGlvbihsaW5lLCBpZHgpIHtcbiAgICAgIHNvdXJjZU5vZGUuYWRkKG5ldyBTb3VyY2VOb2RlKGlkeCArIDEsIDAsIGZpbGVOYW1lLCBsaW5lICsgJ1xcbicpKVxuICAgIH0pXG4gICAgc291cmNlTm9kZS5zZXRTb3VyY2VDb250ZW50KGZpbGVOYW1lLCBjb250ZW50KVxuICB9XG5cbiAgdmFyIGNvbmNhdFNyYyA9IG5ldyBTb3VyY2VOb2RlKClcblxuICBjb25jYXRTcmMuYWRkKFtcbiAgICAnZGVzY3JpYmUoJyArIEpTT04uc3RyaW5naWZ5KGlkKSArICcsIGZ1bmN0aW9uKCkge1xcbicsIHNvdXJjZU5vZGUsICdcXG59KTsnXG4gIF0pXG5cbiAgdmFyIHJlc3VsdCA9IGNvbmNhdFNyYy50b1N0cmluZ1dpdGhTb3VyY2VNYXAoKVxuXG4gIHRoaXMuY2FsbGJhY2sodW5kZWZpbmVkLCByZXN1bHQuY29kZSwgcmVzdWx0Lm1hcC50b1N0cmluZygpKVxufVxuIl19
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Thu Apr 20 2017 17:52:40 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
